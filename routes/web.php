@@ -3,7 +3,7 @@ use App\Task;
 use Illuminate\Http\Request;
 
 //Home
-Route::get('/','HomeController@index');
+//Route::get('/','HomeController@index');
 Route::get('/login','HomeController@login');
 
 //tasks
@@ -13,3 +13,7 @@ Route::delete('/task/{task}','TaskController@delete');
 
 //users
 //Route::
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
