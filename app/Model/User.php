@@ -5,6 +5,9 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Post;
+use Illuminate\Support\Facades\DB;
+
 
 class User extends Authenticatable
 {
@@ -36,4 +39,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $appends = ['user_name'];
+
+
+    public static function getPost($userId)
+    {
+        $userName = User::where('id', $userId)->pluck('name')->first();
+        $postData = DB::table('users')
+                        ->join('posts','user_id','=','users.id')
+                        ->select('*')
+                        ->get();
+
+
+         dd($postData);
+         $postData = Post::where('user_id', $userId)->get();
+
+         //dd(2);
+         dd($postData);
+         return $postData;
+    }
 }
