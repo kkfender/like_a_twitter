@@ -14,8 +14,6 @@
                     <textarea class="form-control" rows="3" name="content"></textarea><br>
                     <input type="submit" value="送信"><input type="reset" value="リセット">
                 </form>
-
-
                 @endif
                 <div class="card-body">
                     @if (session('status'))
@@ -23,8 +21,17 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    aa
+                    {{ dd($posts) }}
 
-                    You are logged in!
+                @if ($posts)
+                    @foreach($posts as $post)
+                    <div class="card-body alert tweet">
+                        {{ $post->content }}
+                    </div>
+                    @endforeach
+
+                @endif
                 </div>
             </div>
         </div>
