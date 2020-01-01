@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Http\Controllers\Auth;
+use Illuminate\Session\SessionManager;
 
 class HomeController extends Controller
 {
@@ -13,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+    //    $this->middleware('auth');
     }
 
     /**
@@ -23,6 +26,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //ログインしていたら
+        if(\Auth::check())
+        {
+            $user = \Auth::user();
+
+            return view('home',compact('user'));
+        }
+        else
+        {
+            return view('home');
+        }
     }
 }
