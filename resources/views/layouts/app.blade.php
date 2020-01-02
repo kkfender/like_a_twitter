@@ -17,7 +17,7 @@
 		  <!-- navbar  -->
 		  <div class="navbar-header">
 		      <a class="navbar-brand" href="{{ url('/')  }}">
-			  Task List
+			  Twitter?
 		      </a>
 		  </div>
 	      </div>
