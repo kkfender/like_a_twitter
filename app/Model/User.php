@@ -73,17 +73,17 @@ class User extends Authenticatable
             //日付を返す
             $postDatum->created_at = $postTime->format('Y年m月d日');
         }
-        else if(!$postTime->isSameHour($now))
+        else if(!$postTime->isSameHour($now) && $postTime->diffInHours($now) !== 0)
         {
             //何時間前かを返す
             $postDatum->created_at = $postTime->diffInHours($now).'時間前';
         }
-        else if(!$postTime->isSameMinute($now))
+        else if(!$postTime->isSameMinute($now) && $postTime->diffInMinutes($now) !== 0)
         {
             //何分前かを返す
             $postDatum->created_at = $postTime->diffInMinutes($now).'分前';
         }
-        else if(!$postTime->isSameSecond($now))
+        else if(!$postTime->isSameSecond($now) && $postTime->diffInSeconds($now) !== 0)
         {
             //何秒前
             $postDatum->created_at = $postTime->diffInSeconds($now).'秒前';
