@@ -32,7 +32,7 @@ class HomeController extends Controller
         if(\Auth::check())
         {
             $user = \Auth::user();
-            $posts = User::getPost($user['id']);
+            $posts = User::getMyPost($user['id']);
             return view('home',compact('user', 'posts'));
         }
         else

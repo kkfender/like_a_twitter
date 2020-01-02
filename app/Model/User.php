@@ -43,8 +43,12 @@ class User extends Authenticatable
 
     protected $appends = ['user_name'];
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 
-    public static function getPost($userId)
+    public static function getMyPost($userId)
     {
         $postData = DB::table('users')
                         ->join('posts','user_id','=','users.id')
