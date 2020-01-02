@@ -45,18 +45,13 @@ class User extends Authenticatable
 
     public static function getPost($userId)
     {
-        $userName = User::where('id', $userId)->pluck('name')->first();
         $postData = DB::table('users')
                         ->join('posts','user_id','=','users.id')
                         ->select('*')
+                        ->orderBy('posts.created_at', 'desc')
                         ->get();
 
 
-         dd($postData);
-         $postData = Post::where('user_id', $userId)->get();
-
-         //dd(2);
-         dd($postData);
          return $postData;
     }
 }

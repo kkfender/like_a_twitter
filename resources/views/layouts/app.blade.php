@@ -12,22 +12,10 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-<<<<<<< HEAD
-	  <nav class="navbar navbar-default">
-	      <div class="container">
-		  <!-- navbar  -->
-		  <div class="navbar-header">
-		      <a class="navbar-brand" href="{{ url('/')  }}">
-			  Twitter?
-		      </a>
-		  </div>
-	      </div>
-	  </nav>
-=======
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
->>>>>>> #7
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
