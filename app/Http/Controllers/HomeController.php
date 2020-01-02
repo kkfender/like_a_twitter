@@ -26,6 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
 
         //ログインしていたら
         if(\Auth::check())
@@ -34,12 +35,23 @@ class HomeController extends Controller
             $user = \Auth::user();
             $posts = User::getPost($user['id']);
 
+=======
+        //ログインしていたら
+        if(\Auth::check())
+        {
+            $user = \Auth::user();
+            $posts = User::getPost($user['id']);
+>>>>>>> #7
             return view('home',compact('user', 'posts'));
         }
         else
         {
+<<<<<<< HEAD
 
             return redirect('/login');
+=======
+            return view('home');
+>>>>>>> #7
         }
     }
 }

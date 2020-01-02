@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+<<<<<<< HEAD
             @if (session('flash_message'))
            <div class="flash_message card-headder alert alert-success">
                {{ session('flash_message') }}
@@ -18,6 +19,8 @@
         </ul>
     </div>
 @endif
+=======
+>>>>>>> #7
             @if(Auth::check())
             <div class="card">
                 <form action="/post" method="POST">
@@ -29,6 +32,7 @@
                     <input type="submit" value="送信"><input type="reset" value="リセット">
                 </form>
                 @endif
+<<<<<<< HEAD
 
 
                 @if ($posts)
@@ -45,6 +49,24 @@
                     <hr>
 
                     @endforeach
+=======
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    aa
+                    {{ dd($posts) }}
+
+                @if ($posts)
+                    @foreach($posts as $post)
+                    <div class="card-body alert tweet">
+                        {{ $post->content }}
+                    </div>
+                    @endforeach
+
+>>>>>>> #7
                 @endif
                 </div>
             </div>
