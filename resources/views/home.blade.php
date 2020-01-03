@@ -36,7 +36,7 @@
 
                 @if ($posts)
                     @foreach($posts as $post)
-                    <div class="card">
+                    <div class="card tweetcard">
                     <div class="card-body alert tweet">
                         {{ $post->name }}
                         {{ $post->created_at }}

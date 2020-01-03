@@ -94,6 +94,30 @@
 /***/ (function(module, exports) {
 
 //js書けるよ　npm run dev 忘れずにね
+var tweetcard = document.getElementsByClassName('tweetcard'); //ON
+
+var _loop = function _loop(i) {
+  //クリックイベントでアラートを表示する
+  tweetcard[i].addEventListener('mouseenter', function () {
+    tweetcard[i].style.backgroundColor = "#e6ecf0";
+  }, false);
+};
+
+for (var i = 0; i < tweetcard.length; i++) {
+  _loop(i);
+} //OUT
+
+
+var _loop2 = function _loop2(_i) {
+  //クリックイベントでアラートを表示する
+  tweetcard[_i].addEventListener('mouseleave', function () {
+    tweetcard[_i].style.backgroundColor = "white";
+  }, false);
+};
+
+for (var _i = 0; _i < tweetcard.length; _i++) {
+  _loop2(_i);
+}
 
 /***/ }),
 
