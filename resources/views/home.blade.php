@@ -40,19 +40,23 @@
                     <div class="card-body alert tweet">
                         {{ $post->name }}
                         {{ $post->created_at }}
-<br>
+                        <br>
                         {{ $post->content }}
-                    </div>
+                        <br>
+                        <br>
+                    {{Form::open()}}
+                            <i class="far fa-heart"></i>
+                    {!! Form::close() !!}
+
                 </div>
 
-                    <hr>
-
+                </div>
                     @endforeach
-
                 @endif
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="{{ mix('js/sample.js') }}" type="text/javascript"></script> 
 @endsection
