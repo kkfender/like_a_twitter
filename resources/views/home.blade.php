@@ -44,9 +44,13 @@
                         {{ $post->content }}
                         <br>
                         <br>
-                    {{Form::open()}}
+                    {{ Form::open(['url' => '/', 'method' => 'post']) }}
+                    {{ Form::hidden('invisible', 'secret') }}
+                    {{ Form::token() }}
+
                             <i class="far fa-heart"></i>
-                    {!! Form::close() !!}
+                    {{ Form::close() }}
+
 
                 </div>
 
@@ -58,5 +62,5 @@
         </div>
     </div>
 </div>
-<script src="{{ mix('js/sample.js') }}" type="text/javascript"></script> 
+<script src="{{ mix('js/sample.js') }}" type="text/javascript"></script>
 @endsection

@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-window.confirm(name + 'さん、この内容で宜しいですか？');
+//js書けるよ　npm run dev 忘れずにね
 
 /***/ }),
 
