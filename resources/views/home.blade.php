@@ -48,8 +48,15 @@
                     {{ Form::hidden('invisible', 'secret') }}
                     {{ Form::token() }}
                     {{ Form::close() }}
-<a href="/like">                            <i class="far fa-heart"></i>
-</a>
+                    <a href="/like"><i class="far fa-heart"></i></a>
+
+                    <form action="/delete/{{$post->id}}" method="post">
+                     {{ csrf_field() }}
+                     <input type="hidden" name="_method" value="delete">
+                     <input type="submit" name="" value="削除" lass="btn btn-danger btn-sm btn-dell">
+
+
+                   </form>
 
                 </div>
                 </div>

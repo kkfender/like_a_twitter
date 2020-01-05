@@ -12,6 +12,8 @@ Auth::routes();
 Route::get('', 'HomeController@index')->name('');
 
 Route::post('/post', 'PostController@post');
+Route::delete('/delete/{delete}', 'PostController@delete');
+
 
 Route::post('/like', 'LikeController@store')->name('like.store');;
 Route::post('/unlike', 'LikeController@unlike');
