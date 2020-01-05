@@ -13,5 +13,5 @@ Route::get('', 'HomeController@index')->name('');
 
 Route::post('/post', 'PostController@post');
 
-Route::post('/like', 'LikeController@like');
+Route::post('/like', 'LikeController@store')->name('like.store');;
 Route::post('/unlike', 'LikeController@unlike');

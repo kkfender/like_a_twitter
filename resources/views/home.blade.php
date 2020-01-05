@@ -33,27 +33,25 @@
                 @endif
 
 
-
                 @if ($posts)
                     @foreach($posts as $post)
+
                     <div class="card tweetcard">
-                    <div class="card-body alert tweet">
+                    <div class="card-body  alert ">
+
                         {{ $post->name }}
                         {{ $post->created_at }}
                         <br>
                         {{ $post->content }}
                         <br>
                         <br>
-                    {{ Form::open(['url' => '/', 'method' => 'post']) }}
                     {{ Form::hidden('invisible', 'secret') }}
                     {{ Form::token() }}
-
-                            <i class="far fa-heart"></i>
                     {{ Form::close() }}
-
+<a href="/like">                            <i class="far fa-heart"></i>
+</a>
 
                 </div>
-
                 </div>
                     @endforeach
                 @endif
@@ -63,4 +61,5 @@
     </div>
 </div>
 <script src="{{ mix('js/sample.js') }}" type="text/javascript"></script>
+
 @endsection
