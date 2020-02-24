@@ -51,11 +51,13 @@
 
                         @if(Auth::id())
                             @if($post->liked)
+                            <div class="like" id="{{ $post->id }}">aaaa</div>
                             <form action="/user/{{$user->id}}/unlike/{{$post->id}}" method="post">
                              {{ csrf_field() }}
                              <input type="submit" name="" value="いいね削除" lass="btn btn-danger btn-sm btn-dell">
                             </form>
                             @else
+                            <div class="unlike"></div>
                             <form action="/user/{{$user->id}}/like/{{$post->id}}" method="post">
                             <input type="submit" name="" value="いいね" lass="btn btn-danger btn-sm btn-dell">
                                 {{ csrf_field() }}
@@ -63,6 +65,23 @@
                             @endif
                         @endif
                     </div>
+                    <script type="text/javascript">
+                        $('#{{$post->id}}').on('click',function(){
+                            $.ajax('api/user/like/',
+                                {
+                                    type: 'post',
+                                    data: null,
+
+                                }
+                            ).done(function(data, textStatus, jqXHR) {
+                                console.log(data, textStatus, jqXHR)
+
+                            }).fail(function(e) {
+                                console.log('正しい結果を得られませんでした。');
+                                console.log(e)
+                            });
+                        })
+                    </script>
                 </div>
                     @endforeach
                 @endif
