@@ -15,5 +15,5 @@ Route::post('/post', 'PostController@post');
 Route::delete('/delete/{delete}', 'PostController@delete');
 
 
-Route::post('/like', 'LikeController@store')->name('like.store');;
-Route::post('/unlike', 'LikeController@unlike');
+Route::post('/user/{user}/like/{post}', 'LikeController@store')->name('like.store');;
+Route::post('/user/{user}/unlike/{post}', 'LikeController@destroy')->name('like.destroy');;;
