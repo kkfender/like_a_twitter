@@ -9,9 +9,10 @@ use App\Post;
 
 class LikeApiController extends Controller
 {
-    public function store()
+    public function store(Request $request)
     {
-        \Debugbar::info(1);
+        \Debugbar::info($request );
+
         return;
     }
 }

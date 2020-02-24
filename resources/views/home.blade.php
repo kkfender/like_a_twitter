@@ -70,7 +70,10 @@
                             $.ajax('api/user/like/',
                                 {
                                     type: 'post',
-                                    data: null,
+                                    data: {
+                                        user: {{$user->id}},
+                                        post: {{$post->id}},
+                                    },
 
                                 }
                             ).done(function(data, textStatus, jqXHR) {
