@@ -33,4 +33,14 @@ class PostController extends Controller
 
 
     }
+
+    public function Delete($id)
+    {
+
+        $post = Post::find($id);
+
+        $post->delete();
+
+        return redirect('')->with('flash_message', '投稿を削除しました');
+    }
 }

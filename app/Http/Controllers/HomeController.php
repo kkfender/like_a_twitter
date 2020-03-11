@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Like;
 use App\Http\Controllers\Auth;
 use Illuminate\Session\SessionManager;
 
@@ -32,7 +33,21 @@ class HomeController extends Controller
         if(\Auth::check())
         {
             $user = \Auth::user();
-            $posts = User::getPost($user['id']);
+            $posts = User::getMyPost($user['id']);
+            foreach($posts as $post)
+            {
+                if(Like::where('user_id', $user->id,)->where('post_id',$post->id)->first())
+                {
+                    $post->liked = true;
+                }
+                else
+                {
+                    $post->liked = false;
+                }
+            }
+
+
+
             return view('home',compact('user', 'posts'));
         }
         else
