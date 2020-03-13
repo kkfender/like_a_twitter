@@ -11,7 +11,7 @@ class LikeApiController extends Controller
 {
     public function store(Request $request)
     {
-        \Debugbar::info($request->user,$request->post,);
+        \Debugbar::info(Like::get());
 
         return;
     }
