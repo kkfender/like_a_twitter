@@ -36,14 +36,17 @@ class HomeController extends Controller
             $posts = User::getMyPost($user['id']);
             foreach($posts as $post)
             {
-                if(Like::where('user_id', $user->id,)->where('post_id',$post->id)->first())
+                if(Like::where('user_id', $user->id)->where('post_id',$post->id)->first())
                 {
                     $post->liked = true;
+                    $post->count = Like::where('post_id',$post->id)->count();
+                    //TODO クエリの発行数を抑えるためにリレーションで行う
                 }
                 else
                 {
                     $post->liked = false;
                 }
+
             }
 
 

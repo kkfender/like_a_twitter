@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware('api')->post('/user/like/', 'LikeApiController@store');
+Route::middleware('api')->post('/user/unlike/', 'LikeApiController@delete');

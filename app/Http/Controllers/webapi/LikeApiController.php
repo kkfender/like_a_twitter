@@ -11,7 +11,23 @@ class LikeApiController extends Controller
 {
     public function store(Request $request)
     {
-        \Debugbar::info(Like::get());
+        $like = new Like;
+
+        $like->user_id = $request->user;
+        $like->post_id = $request->post;
+
+        $like->save();
+
+        return;
+    }
+
+    public function delete(Request $request)
+    {
+        $like = Like::where('user_id',$request->user)
+                    ->where('post_id',$request->post)
+                    ;
+                    
+        $like->delete();
 
         return;
     }

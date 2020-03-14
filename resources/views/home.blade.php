@@ -51,38 +51,77 @@
 
                         @if(Auth::id())
                             @if($post->liked)
-                            <div class="like" id="{{ $post->id }}"><i class="far fa-heart"></i></div>
-
+                            <div class="unlike" id="{{ $post->id }}">
+                                <i class="fa fa-heart" style="color: pink;"></i>
+                                <span data-like="{{$post->count}}">{{$post->count}}</span>
+                            </div>
                             @else
-                            <div class="unlike">bbbb</div>
-
+                            <div class="like" id="{{ $post->id }}">
+                                <i class="far fa-heart" style="color: pink;"></i>
+                                <span data-like="0"></span>
+                            </div>
                             @endif
                         @endif
                     </div>
                     <script type="text/javascript">
+                    //関数化してoneを適用
                     (function () {
                         var $likeButton = $('#{{$post->id}}')
 
                         $likeButton.on('click',function(){
-                            $.ajax('api/user/like/',
-                                {
-                                    type: 'post',
-                                    data: {
-                                        user: {{$user->id}},
-                                        post: {{$post->id}},
-                                    },
 
-                                }
-                            ).done(function(data, textStatus, jqXHR) {
-                                console.log($likeButton.find('i'))
-                                 $likeButton.find('i').removeClass();
-                                 $likeButton.find('i').addClass('fa fa-heart');
+                            if ('like' == $(this).attr('class'))
+                            {
+                                $.ajax('api/user/like/',
+                                    {
+                                        type: 'post',
+                                        data: {
+                                            user: {{$user->id}},
+                                            post: {{$post->id}},
+                                        },
 
+                                    }
+                                ).done(function(data, textStatus, jqXHR) {
 
-                            }).fail(function(e) {
-                                console.log('正しい結果を得られませんでした。');
-                                console.log(e)
-                            });
+                                     $likeButton.find('i').removeClass();
+                                     $likeButton.find('i').addClass('fa fa-heart');
+                                     $likeButton.removeClass();
+                                     $likeButton.addClass('unlike');
+
+                                     var likeCount = $likeButton.find('span').data('like');
+                                     $likeButton.find('span').text(likeCount+1);
+
+                                }).fail(function(e) {
+                                    console.log('正しい結果を得られませんでした。');
+                                    console.log(e)
+                                });
+                            }
+                            else
+                            {
+                                $.ajax('api/user/unlike/',
+                                    {
+                                        type: 'post',
+                                        data: {
+                                            user: {{$user->id}},
+                                            post: {{$post->id}},
+                                        },
+
+                                    }
+                                ).done(function(data, textStatus, jqXHR) {
+
+                                     $likeButton.find('i').removeClass();
+                                     $likeButton.find('i').addClass('far fa-heart');
+                                     $likeButton.removeClass();
+                                     $likeButton.addClass('like');
+
+                                     var likeCount = $likeButton.find('span').data('like');
+                                     $likeButton.find('span').text(likeCount-1);
+
+                                }).fail(function(e) {
+                                    console.log('正しい結果を得られませんでした。');
+                                    console.log(e)
+                                });
+                            }
                         })
                     }());
                     </script>
