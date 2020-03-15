@@ -145,6 +145,5 @@
         </div>
     </div>
 </div>
-<script src="{{ mix('js/sample.js') }}" type="text/javascript"></script>
 
 @endsection

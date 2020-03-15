@@ -19,6 +19,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/modal.css') }}" rel="stylesheet">
+
+    <script src="{{ asset('js/modal.js') }}"></script>
+    <script src="{{ asset('js/sample.js') }}"></script>
+
+
 
 </head>
 <body>
