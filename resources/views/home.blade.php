@@ -20,7 +20,20 @@
     </div>
 @endif
 
-            @if(Auth::check())
+
+<body>
+<div class="content">
+    <a class="js-modal-open" href="">クリックでモーダルを表示</a>
+</div>
+<div class="modal js-modal">
+    <div class="modal__bg js-modal-close"></div>
+    <div class="modal__content">
+        <p>ここにモーダルウィンドウで表示したいコンテンツを入れます。モーダルウィンドウを閉じる場合は下の「閉じる」をクリックするか、背景の黒い部分をクリックしても閉じることができます。</p>
+        <a class="js-modal-close" href="">閉じる</a>
+    </div><!--modal__inner-->
+</div><!--modal-->
+</body>
+    @if(Auth::check())
             <div class="card">
                 <form action="/post" method="POST">
                     {{ csrf_field() }}
@@ -58,7 +71,7 @@
                             @else
                             <div class="like" id="{{ $post->id }}">
                                 <i class="far fa-heart" style="color: pink;"></i>
-                                <span data-like="0"></span>
+                                <span data-like="{{$post->count}}">{{$post->count}}</span>
                             </div>
                             @endif
                         @endif
@@ -87,9 +100,8 @@
                                      $likeButton.find('i').addClass('fa fa-heart');
                                      $likeButton.removeClass();
                                      $likeButton.addClass('unlike');
-
                                      var likeCount = $likeButton.find('span').data('like');
-                                     $likeButton.find('span').text(likeCount+1);
+                                     $likeButton.find('span').text(data);
 
                                 }).fail(function(e) {
                                     console.log('正しい結果を得られませんでした。');
@@ -115,7 +127,7 @@
                                      $likeButton.addClass('like');
 
                                      var likeCount = $likeButton.find('span').data('like');
-                                     $likeButton.find('span').text(likeCount-1);
+                                     $likeButton.find('span').text(data);
 
                                 }).fail(function(e) {
                                     console.log('正しい結果を得られませんでした。');

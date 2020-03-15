@@ -13,12 +13,13 @@ class LikeApiController extends Controller
     {
         $like = new Like;
 
+
         $like->user_id = $request->user;
         $like->post_id = $request->post;
 
         $like->save();
 
-        return;
+        return Like::where('post_id', $request->post)->count();
     }
 
     public function delete(Request $request)
@@ -26,9 +27,9 @@ class LikeApiController extends Controller
         $like = Like::where('user_id',$request->user)
                     ->where('post_id',$request->post)
                     ;
-                    
+
         $like->delete();
 
-        return;
+        return Like::where('post_id', $request->post)->count();
     }
 }

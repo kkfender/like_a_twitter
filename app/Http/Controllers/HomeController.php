@@ -45,12 +45,9 @@ class HomeController extends Controller
                 else
                 {
                     $post->liked = false;
+                    $post->count = Like::where('post_id',$post->id)->count();
                 }
-
             }
-
-
-
             return view('home',compact('user', 'posts'));
         }
         else
