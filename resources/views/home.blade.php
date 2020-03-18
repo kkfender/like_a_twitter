@@ -23,7 +23,7 @@
 
 <body>
 <div class="content">
-    <a class="js-modal-open" href="">クリックでモーダルを表示</a>
+    <a class="js-modal-open" href="">つぶやく</a>
 </div>
 <div class="modal js-modal">
     <div class="modal__bg js-modal-close"></div>
@@ -40,8 +40,13 @@
                     <div class="card-headder alert alert-success">
                         こんにちは{{$user->name}}さん。
                     </div>
-                    <textarea class="form-control" rows="3" name="content"></textarea><br>
-                    <input type="submit" value="送信"><input type="reset" value="リセット">
+                    <div class="modal js-modal">
+                        <div class="modal__bg js-modal-close"></div>
+                        <div class="modal__content">
+                            <textarea class="form-control" rows="3" name="content"></textarea><br>
+                            <input type="submit" value="送信"><input type="reset" value="リセット">
+                        </div><!--modal__inner-->
+                    </div><!--modal-->
                 </form>
                 @endif
 
