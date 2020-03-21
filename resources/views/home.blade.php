@@ -4,21 +4,25 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-
             @if (session('flash_message'))
-           <div class="flash_message card-headder alert alert-success">
-               {{ session('flash_message') }}
-           </div>
-       @endif
-       @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+            <div class="flash_message card-headder alert alert-success">
+                {{ session('flash_message') }}
+            </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <script type="text/javascript">
+                $('.alert').on('click', function(){
+                        $(this).fadeOut();
+                });
+            </script>
 
 
 <body>
