@@ -33,6 +33,8 @@ class HomeController extends Controller
         if(\Auth::check())
         {
             $user = \Auth::user();
+dd($user->profile()->toSql());
+
             $posts = User::getMyPost($user['id']);
             foreach($posts as $post)
             {

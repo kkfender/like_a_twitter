@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Post;
 use App\Like;
+use App\Profile;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
@@ -44,7 +45,7 @@ class User extends Authenticatable
 
     protected $appends = ['user_name'];
 
-
+    //relation
     public function posts()
     {
         return $this->hasMany(Post::class);
@@ -53,6 +54,11 @@ class User extends Authenticatable
     public function likes()
     {
        return $this->hasMany(Like::class);
+    }
+
+    Public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 
     public static function getMyPost($userId)
