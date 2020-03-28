@@ -9,7 +9,9 @@ Route::get('/login','HomeController@login');
 //Route::
 Auth::routes();
 
-Route::get('', 'HomeController@index')->name('');
+Route::get('', 'HomeController@index')->name('home.index');
+Route::get('/{userName}', 'UserController@index')->name('user.index');
+Route::post('/update', 'UserController@update')->name('user.update');
 
 Route::post('/post', 'PostController@post');
 Route::delete('/delete/{delete}', 'PostController@delete');

@@ -3,11 +3,43 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Like;
+use App\Http\Controllers\Auth;
 
 class UserController extends Controller
 {
-    public function()
+    public function index()
     {
+        //ログインしていたら
+        if(\Auth::check())
+        {
+            $user = \Auth::user();
+            $posts = User::getMyPost($user['id']);
+            foreach($posts as $post)
+            {
+                if(Like::where('user_id', $user->id)->where('post_id',$post->id)->first())
+                {
+                    $post->liked = true;
+                    $post->count = Like::where('post_id',$post->id)->count();
+                    //TODO クエリの発行数を抑えるためにリレーションで行う
+                }
+                else
+                {
+                    $post->liked = false;
+                    $post->count = Like::where('post_id',$post->id)->count();
+                }
+            }
+            return view('user.index',compact('user', 'posts'));
+        }
+        else
+        {
 
+            return redirect('/login');
+        }
+    }
+    public function update(Request $request)
+    {
+        dump($request);
     }
 }

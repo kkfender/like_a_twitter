@@ -66,7 +66,7 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    <a class="dropdown-item" href="#">プロフィール
+                                    <a class="dropdown-item" href="{{ route('user.index',Auth::user()->name) }}">プロフィール
                                     </a>
                                 </div>
 
@@ -77,7 +77,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>

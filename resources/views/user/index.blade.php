@@ -1,16 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="navbar navbar-expand-md bg-white shadow-sm border-top" style="height:300px">
+</div>
+<div class="navbar navbar-expand-md bg-white shadow-sm border-top mb-4" style="height:60px">
+    <div class="center-right">
+        <a class="js-modal-edit-open nav-link" href="">プロフィール編集</a>
+        <form action="/update" method="POST">
+            {{ csrf_field() }}
+             @csrf
+            <div class="modal js-modal-edit">
+                <div class="modal__bg js-modal-edit-close"></div>
+                <div class="modal__content">
+                    <input type="text" name="userName" placeholder="{{$user->name}}"></input>
+                    <input type="submit" value="送信"><input type="reset" value="リセット">
+                </div><!--modal__inner-->
+            </div><!--modal-->
+        </form>
+    </div>
+</div>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="card col-md-3" style="height:250px;">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
+        <div class="col-md-4 ">
+            <h1 style="font-size:30px;">{{$user->name}}</h1>
+
         </div>
+
         <div class="col-md-8">
             @if (session('flash_message'))
             <div class="flash_message card-headder alert alert-success">
@@ -33,11 +48,7 @@
             </script>
 
 
-<body>
-<div class="content">
-    <a class="js-modal-open" href="">つぶやく</a>
-</div>
-</body>
+
     @if(Auth::check())
             <div class="card">
                 <form action="/post" method="POST">
