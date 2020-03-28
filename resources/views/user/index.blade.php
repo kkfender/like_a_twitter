@@ -12,8 +12,9 @@
             <div class="modal js-modal-edit">
                 <div class="modal__bg js-modal-edit-close"></div>
                 <div class="modal__content">
-                    <input type="text" name="userName" placeholder="{{$user->name}}"></input>
-                    <input type="submit" value="送信"><input type="reset" value="リセット">
+                    <input type="text" name="userName" class="form-control" placeholder="{{$user->name}}"></input><br><br>
+                    <textarea name="introduction" class="form-control" placeholder="introduction"></textarea><br>
+                    <input type="submit" value="送信" class="btn btn-primary"><input type="reset" value="リセット" class="btn btn-primary">
                 </div><!--modal__inner-->
             </div><!--modal-->
         </form>

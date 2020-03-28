@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Like;
+use App\Profile;
 use App\Http\Controllers\Auth;
 
 class UserController extends Controller
@@ -40,6 +41,19 @@ class UserController extends Controller
     }
     public function update(Request $request)
     {
-        dump($request);
+        //ログインしていたら
+        if(\Auth::check())
+        {
+            $user = \Auth::user();
+            $profile =  new Profile;
+
+            $profile->users_id = $user->id;
+            $profile->accountName = $user->id;
+            $profile->userName = $request->input('userName');
+            $profile->introduction = $request->input('introduction');
+
+            $profile->save();
+            //TODO　まずユーザー編集画面の新規作成。そのプロフィールにユニーク誓約、その他もろもろ
+        }
     }
 }
