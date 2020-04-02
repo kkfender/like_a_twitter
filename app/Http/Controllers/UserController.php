@@ -45,14 +45,36 @@ class UserController extends Controller
         if(\Auth::check())
         {
             $user = \Auth::user();
-            $profile =  new Profile;
 
-            $profile->users_id = $user->id;
-            $profile->accountName = $user->id;
-            $profile->userName = $request->input('userName');
-            $profile->introduction = $request->input('introduction');
+            if ($profile = Profile::where('user_id', $user->id)->first())
+            {
+                $profile->account_name = $user->id;
 
-            $profile->save();
+                if($request->input('userName'))
+                {
+                    $profile->user_name = $request->input('userName');
+                }
+                if($request->input('introduction'))
+                {
+                    $profile->introduction = $request->input('introduction');
+                }
+
+                $profile->avatar_filename = $request->file('file')->store('public/');
+                $profile->save();
+            }
+            else
+            {
+                $profile =  new Profile;
+
+                $profile->user_id = $user->id;
+                $profile->account_name = $user->id;
+                $profile->user_name = $request->input('userName');
+                $profile->introduction = $request->input('introduction');
+                $profile->avatar_filename = $request->file('file')->store('public/');
+
+                $profile->save();
+            }
+        return redirect('/');
             //TODO　まずユーザー編集画面の新規作成。そのプロフィールにユニーク誓約、その他もろもろ
         }
     }

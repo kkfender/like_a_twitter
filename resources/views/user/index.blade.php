@@ -6,14 +6,15 @@
 <div class="navbar navbar-expand-md bg-white shadow-sm border-top mb-4" style="height:60px">
     <div class="center-right">
         <a class="js-modal-edit-open nav-link" href="">プロフィール編集</a>
-        <form action="/update" method="POST">
+        <form action="/update" method="POST" enctype='multipart/form-data'>
             {{ csrf_field() }}
              @csrf
             <div class="modal js-modal-edit">
                 <div class="modal__bg js-modal-edit-close"></div>
                 <div class="modal__content">
                     <input type="text" name="userName" class="form-control" placeholder="{{$user->name}}"></input><br><br>
-                    <textarea name="introduction" class="form-control" placeholder="introduction"></textarea><br>
+                    <textarea name="introduction" class="form-control"></textarea><br>
+                    <input type="file" name="file" value="">
                     <input type="submit" value="送信" class="btn btn-primary"><input type="reset" value="リセット" class="btn btn-primary">
                 </div><!--modal__inner-->
             </div><!--modal-->
