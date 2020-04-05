@@ -59,7 +59,9 @@ class UserController extends Controller
                     $profile->introduction = $request->input('introduction');
                 }
 
-                $profile->avatar_filename = $request->file('file')->store('public/');
+                $filePath = $request->file('file')->store('public');
+                $profile->avatar_filename = str_replace('public/', '', $filePath);
+
                 $profile->save();
             }
             else
@@ -70,7 +72,9 @@ class UserController extends Controller
                 $profile->account_name = $user->id;
                 $profile->user_name = $request->input('userName');
                 $profile->introduction = $request->input('introduction');
-                $profile->avatar_filename = $request->file('file')->store('public/');
+                
+                $filePath = $request->file('file')->store('public');
+                $profile->avatar_filename = str_replace('public/', '', $filePath);
 
                 $profile->save();
             }

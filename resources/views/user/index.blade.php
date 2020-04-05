@@ -25,7 +25,7 @@
     <div class="row justify-content-center">
         <div class="col-md-4 ">
             <h1 style="font-size:30px;">{{$user->name}}</h1>
-
+            <img src="./storage/{{$user->profile->avatar_filename}}" alt="" style="width: 100px;"">
         </div>
 
         <div class="col-md-8">
