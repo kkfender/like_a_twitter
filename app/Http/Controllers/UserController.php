@@ -72,7 +72,7 @@ class UserController extends Controller
                 $profile->account_name = $user->id;
                 $profile->user_name = $request->input('userName');
                 $profile->introduction = $request->input('introduction');
-                
+                 
                 $filePath = $request->file('file')->store('public');
                 $profile->avatar_filename = str_replace('public/', '', $filePath);
 
